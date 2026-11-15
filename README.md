@@ -13,6 +13,7 @@ Built by [Width.ai](https://width.ai). Also see our [n8n workflow templates](htt
 | Area | What's in it |
 |---|---|
 | [Google Ads](google-ads/) | Building, managing, and optimizing Google Ads accounts: campaign builds, ad copy, search terms, AI Max and Performance Max, recommendations, safe changes, change history |
+| [SEO](seo/) | Search engine optimization research and content planning: People also ask questions and related searches |
 
 More areas will be added as their first skills are ready.
 
@@ -29,6 +30,10 @@ More areas will be added as their first skills are ready.
 - **[google-ads-recommendations-triage](google-ads/google-ads-recommendations-triage/)**: Sorts every open Google Ads recommendation into accept, reject, or test, judged against the campaign's own numbers and your target and break-even CPA or ROAS, and flags the ones that mainly raise spend. You get a reason for each that names the numbers, a change set for accepted items, experiment plans for tests, and a check of whether auto-apply is on. ([Guide](guides/google-ads/google-ads-recommendations-triage.md))
 - **[google-ads-apply-changes](google-ads/google-ads-apply-changes/)**: Checks proposed changes against the live account (misspelled campaign names, stale values, budget moves over your limits, negatives that would block converting searches, ad text over Google's limits), shows a before and after preview, gets approval, and applies the batch through a connector or as Google Ads Editor import files with rollback files. ([Guide](guides/google-ads/google-ads-apply-changes.md))
 - **[google-ads-change-log](google-ads/google-ads-change-log/)**: Logs every change with its reason, evidence, and a review date set by Google's waiting periods, lists reviews that are due, and reconciles the log against the account's change history to catch changes made by other people, scripts, and auto-applied recommendations. ([Guide](guides/google-ads/google-ads-change-log.md))
+
+### SEO
+
+- **[seo-people-also-ask](seo/seo-people-also-ask/)**: Searches Google for a term in your own Chrome through Claude in Chrome and returns the "People also ask" questions and "People also search for" terms, in Google's order and wording. It opens a few questions first so Google loads more, and stops for you if Google shows a CAPTCHA. ([Guide](guides/seo/seo-people-also-ask.md))
 
 ## How the repo is organized
 
