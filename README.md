@@ -1,6 +1,8 @@
 # Claude Marketing Skills
 
-Claude skills for the marketing work businesses do every week, starting with Google Ads. Each skill is a folder of instructions and reference files that Claude loads when a request calls for it, so you get the same process and the same quality checks every time instead of re-explaining the job in every chat.
+Claude skills for the marketing work businesses do every week.
+
+Each skill is a folder of instructions and reference files that Claude loads when a request calls for it, so you get the same process and the same quality checks every time instead of re-explaining the job in every chat.
 
 Every skill comes with a guide that explains what it does, how it works, how to install it, how to use it, and how to fix common problems.
 
