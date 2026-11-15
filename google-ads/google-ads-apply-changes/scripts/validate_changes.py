@@ -78,6 +78,14 @@ def width(text: str) -> int:
     return sum(2 if unicodedata.east_asian_width(ch) in ("W", "F") else 1 for ch in text)
 
 
+# Keyword insertion and other customizers count as their default text: {KeyWord:Water Heaters} counts as 13.
+INSERTION_RE = re.compile(r"\{[^{}:]+:([^{}]*)\}")
+
+
+def ad_width(text: str) -> int:
+    return width(INSERTION_RE.sub(lambda m: m.group(1), text))
+
+
 def tokens(text: str) -> list[str]:
     t = text.strip().lower()
     if t.startswith("-"):
@@ -168,12 +176,12 @@ def check_rsa(report: Report, cid: str, change: dict):
     if not 2 <= len(descriptions) <= 4:
         report.add("error", cid, f"needs 2 to 4 descriptions, has {len(descriptions)}")
     for i, h in enumerate(headlines, 1):
-        if width(h) > HEADLINE_MAX:
-            report.add("error", cid, f"headline {i} is {width(h)} characters, over {HEADLINE_MAX}: '{h}'")
+        if ad_width(h) > HEADLINE_MAX:
+            report.add("error", cid, f"headline {i} is {ad_width(h)} characters, over {HEADLINE_MAX}: '{h}'")
         lint_ad_text(report, cid, f"headline {i}", h, True)
     for i, d in enumerate(descriptions, 1):
-        if width(d) > DESCRIPTION_MAX:
-            report.add("error", cid, f"description {i} is {width(d)} characters, over {DESCRIPTION_MAX}: '{d}'")
+        if ad_width(d) > DESCRIPTION_MAX:
+            report.add("error", cid, f"description {i} is {ad_width(d)} characters, over {DESCRIPTION_MAX}: '{d}'")
         lint_ad_text(report, cid, f"description {i}", d, False)
     for label, items in (("headline", headlines), ("description", descriptions)):
         seen = {}
@@ -184,8 +192,8 @@ def check_rsa(report: Report, cid: str, change: dict):
             seen[key] = True
     for key in ("path1", "path2"):
         value = str(change.get(key, "") or "")
-        if width(value) > PATH_MAX:
-            report.add("error", cid, f"{key} is {width(value)} characters, over {PATH_MAX}: '{value}'")
+        if ad_width(value) > PATH_MAX:
+            report.add("error", cid, f"{key} is {ad_width(value)} characters, over {PATH_MAX}: '{value}'")
     if change.get("pins") or change.get("pinned"):
         report.add("warning", cid, "pinned assets reduce the combinations Google can test; pin only what must always show")
     url = str(change.get("final_url", ""))
