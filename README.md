@@ -1,4 +1,4 @@
-# Claude Marketing Skills
+# Our Claude Marketing Skills | Get real value out of your claude subscription
 
 Claude skills for the marketing work businesses do every week.
 
